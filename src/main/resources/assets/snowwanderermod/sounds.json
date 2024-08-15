@@ -1,0 +1,8 @@
+{
+  "breathing_sound": {
+    "subtitle": "sounds.snowwanderermod.breathing_sound",
+    "sounds": [
+      "snowwanderermod:breathing_sound"
+    ]
+  }
+}
