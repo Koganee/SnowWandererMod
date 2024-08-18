@@ -1,11 +1,16 @@
 package net.kogane.snowwanderermod;
 
 import com.mojang.logging.LogUtils;
+import net.kogane.snowwanderermod.entity.ModEntities;
+import net.kogane.snowwanderermod.entity.client.SnowWandererRenderer;
 import net.kogane.snowwanderermod.event.FogEventHandler;
 import net.kogane.snowwanderermod.event.ModEvents;
+import net.kogane.snowwanderermod.item.ModItems;
 import net.kogane.snowwanderermod.sounds.ModSounds;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -33,7 +38,8 @@ public class SnowWandererMod
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModSounds.register(modEventBus);
-
+        ModEntities.register(modEventBus);
+        ModItems.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
@@ -48,7 +54,8 @@ public class SnowWandererMod
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
+            event.accept(ModItems.SNOW_WANDERER_SPAWN_EGG);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -65,7 +72,7 @@ public class SnowWandererMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            EntityRenderers.register(ModEntities.SNOW_WANDERER.get(), SnowWandererRenderer::new);
         }
     }
 

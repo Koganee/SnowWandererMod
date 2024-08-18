@@ -1,3 +1,5 @@
 {
-  "sounds.snowwanderermod.breathing_sound": "Breathing Sounds"
+  "sounds.snowwanderermod.breathing_sound": "Breathing Sounds",
+  "item.snowwanderermod.snow_wanderer_spawn_egg": "Snow Wanderer Spawn Egg",
+  "entity.snowwanderermod.snow_wanderer": "Snow Wanderer"
 }
