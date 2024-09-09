@@ -1,0 +1,12 @@
+{
+  "name": "Snow Wanderer",
+  "category": "creature",
+  "spawn_probability": 0.1,
+  "min_group": 1,
+  "max_group": 4,
+  "biomes": [
+    "minecraft:snowy_tundra",
+    "minecraft:snowy_mountains",
+    "minecraft:snowy_taiga"
+  ]
+}

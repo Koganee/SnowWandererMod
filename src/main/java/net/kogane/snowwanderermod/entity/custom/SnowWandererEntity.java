@@ -2,9 +2,7 @@ package net.kogane.snowwanderermod.entity.custom;
 
 import net.kogane.snowwanderermod.entity.ModEntities;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
@@ -15,7 +13,6 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
-import net.minecraft.world.entity.AnimationState;
 
 public class SnowWandererEntity extends Animal {
     public final AnimationState idleAnimationState = new AnimationState();
@@ -35,10 +32,11 @@ public class SnowWandererEntity extends Animal {
         this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
     }
 
-    public static AttributeSupplier.Builder createAttributes()
-    {
-        return Animal.createLivingAttributes().add(Attributes.MAX_HEALTH, 350)
-                .add(Attributes.MOVEMENT_SPEED, 1.00f);
+    public static AttributeSupplier.Builder createAttributes() {
+        return Mob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 20.0) // Example health value
+                .add(Attributes.MOVEMENT_SPEED, 0.25) // Example speed value
+                .add(Attributes.FOLLOW_RANGE, 35.0); // Example follow range value
     }
 
     private void setupAnimationStates() {

@@ -1,6 +1,8 @@
 package net.kogane.snowwanderermod.event;
 
 import net.kogane.snowwanderermod.SnowWandererMod;
+import net.kogane.snowwanderermod.entity.ModEntities;
+import net.kogane.snowwanderermod.entity.custom.SnowWandererEntity;
 import net.kogane.snowwanderermod.sounds.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -14,6 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -55,5 +58,10 @@ public class ModEvents {
         Level world = player.getCommandSenderWorld();
 
         //world.playSeededSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.BREATHING_SOUND.get(), SoundSource.BLOCKS, 100.0F, 1.0F, 0);
+    }
+
+    @SubscribeEvent
+    public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
+        event.put(ModEntities.SNOW_WANDERER.get(), SnowWandererEntity.createAttributes().build());
     }
 }
